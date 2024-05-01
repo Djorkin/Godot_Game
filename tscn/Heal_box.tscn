@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://er82ayoqkt6n"]
+
+[ext_resource type="PackedScene" uid="uid://cb03uncvftrm3" path="res://tscn/base_box.tscn" id="1_kp4sj"]
+[ext_resource type="Script" path="res://Scripts/hill_box.gd" id="2_f6cvv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ggrn"]
+transparency = 4
+albedo_color = Color(0, 1, 0, 0.211765)
+
+[node name="Heal_box" instance=ExtResource("1_kp4sj")]
+
+[node name="Base_box" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_2ggrn")
+
+[node name="Area3D" parent="Base_box" index="0"]
+script = ExtResource("2_f6cvv")
+value = 222

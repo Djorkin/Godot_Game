@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Items" load_steps=4 format=3 uid="uid://b6btjd8ld5lio"]
+
+[ext_resource type="Texture2D" uid="uid://dnuq3bxoq8y23" path="res://Image/Glass_flask__green_liquid__potion_pain__gloomy_S2567005769_St50_G13.jpeg" id="1_7gocd"]
+[ext_resource type="Script" path="res://Scripts/Items.gd" id="1_08yfq"]
+[ext_resource type="PackedScene" uid="uid://nwl3fsmqfmy6" path="res://tscn/Pain_colba.tscn" id="2_nptca"]
+
+[resource]
+script = ExtResource("1_08yfq")
+name = "Зелье Боли"
+scene = ExtResource("2_nptca")
+icon = ExtResource("1_7gocd")
+cost = 5
+description = "none"
+repeats = 1
+mixing = true

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://djmad3fylqamj"]
+
+[ext_resource type="Script" path="res://UI/Scripts/item_slot.gd" id="1_8li8j"]
+[ext_resource type="Texture2D" uid="uid://dnuq3bxoq8y23" path="res://Image/Glass_flask__green_liquid__potion_pain__gloomy_S2567005769_St50_G13.jpeg" id="1_t7kx2"]
+
+[node name="Item_slot" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8li8j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("1_t7kx2")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0, 0.815686, 1)
+horizontal_alignment = 1

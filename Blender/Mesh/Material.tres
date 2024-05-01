@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dhbhn0gcdxfw3"]
+
+[ext_resource type="Texture2D" uid="uid://cmv04gblf084i" path="res://Blender/Mesh/Tex/UV_Checker.png" id="1_lnckk"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_lnckk")
+roughness = 0.5
+uv1_scale = Vector3(2, 2, 20.06)
+uv1_offset = Vector3(0, 0.9, 0)

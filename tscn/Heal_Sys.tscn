@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddkp77656ahlc"]
+
+[ext_resource type="Script" path="res://Scripts/HealSystem.gd" id="1_6ac4c"]
+
+[node name="Heal_Sys" type="Node"]
+script = ExtResource("1_6ac4c")

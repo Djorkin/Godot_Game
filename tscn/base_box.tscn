@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb03uncvftrm3"]
+
+[ext_resource type="Script" path="res://Scripts/Base_box.gd" id="1_pk3m6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bdtk6"]
+size = Vector3(10, 20, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gq5q8"]
+transparency = 4
+albedo_color = Color(1, 1, 1, 0.168627)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cy4ke"]
+size = Vector3(10, 20, 10)
+
+[node name="Base_box" type="Node3D"]
+
+[node name="Base_box" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+mesh = SubResource("BoxMesh_bdtk6")
+surface_material_override/0 = SubResource("StandardMaterial3D_gq5q8")
+
+[node name="Area3D" type="Area3D" parent="Base_box"]
+script = ExtResource("1_pk3m6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base_box/Area3D"]
+shape = SubResource("BoxShape3D_cy4ke")
+
+[connection signal="body_entered" from="Base_box/Area3D" to="Base_box/Area3D" method="_on_body_entered"]

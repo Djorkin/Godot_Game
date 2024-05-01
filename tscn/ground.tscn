@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://du4gumq0wv851"]
+
+[ext_resource type="PackedScene" uid="uid://c78xkgcxh5i5s" path="res://Blender/Mesh/Ground.blend" id="1_akbg8"]
+[ext_resource type="Material" uid="uid://dhbhn0gcdxfw3" path="res://Blender/Mesh/Material.tres" id="2_m15od"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fi2m6"]
+data = PackedVector3Array(-10, 0, 9.9997, 10, 0, -10, 10, 0, 9.9997, -10, 0, 9.9997, -10, 0, -10, 10, 0, -10)
+
+[node name="Ground" instance=ExtResource("1_akbg8")]
+
+[node name="Plane" parent="." index="0"]
+material_override = ExtResource("2_m15od")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Plane" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_fi2m6")

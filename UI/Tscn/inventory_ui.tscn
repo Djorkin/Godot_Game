@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8idyxnbf5ltp"]
+
+[ext_resource type="Script" path="res://UI/Scripts/InventoryUI.gd" id="1_x84xy"]
+[ext_resource type="PackedScene" uid="uid://djmad3fylqamj" path="res://UI/Tscn/item_slot.tscn" id="2_s5i55"]
+[ext_resource type="Texture2D" uid="uid://dnuq3bxoq8y23" path="res://Image/Glass_flask__green_liquid__potion_pain__gloomy_S2567005769_St50_G13.jpeg" id="3_hjd3i"]
+[ext_resource type="Texture2D" uid="uid://kt1mt3wrn57g" path="res://Image/Glass_flask__red_liquid__potion_healing_S2381706932_St50_G13.jpeg" id="3_mr8ik"]
+
+[node name="InventoryUI" type="Control"]
+unique_name_in_owner = true
+light_mask = 2
+visibility_layer = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_x84xy")
+slot_scene = ExtResource("2_s5i55")
+
+[node name="Inventory_list2" type="ItemList" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.0
+offset_top = -270.5
+offset_right = 272.0
+offset_bottom = 270.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 5
+theme_override_constants/icon_margin = 0
+item_count = 1
+max_columns = 30
+same_column_width = true
+fixed_column_width = 50
+icon_mode = 0
+fixed_icon_size = Vector2i(50, 50)
+item_0/text = "33"
+item_0/icon = ExtResource("3_mr8ik")
+
+[node name="Inventory_info2" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 280.0
+offset_top = -270.0
+offset_right = 556.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Inventory_info2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -436.0
+offset_right = 122.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Стоимость" type="Label" parent="Inventory_info2/VBoxContainer"]
+layout_mode = 2
+text = "Стоимость: 0"
+
+[node name="Свойство" type="Label" parent="Inventory_info2/VBoxContainer"]
+layout_mode = 2
+text = "Свойство: 30 Heal"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory_info2"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 11.0
+offset_right = 128.0
+offset_bottom = 105.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="Inventory_info2/HBoxContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("3_hjd3i")
+expand_mode = 2
+
+[node name="Name" type="Label" parent="Inventory_info2/HBoxContainer"]
+layout_mode = 2
+text = "Name"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 87.0
+grow_horizontal = 2
+text = "Инвентарь"
+horizontal_alignment = 1

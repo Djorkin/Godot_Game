@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq6fy18xdota4"]
+
+[ext_resource type="Script" path="res://Scripts/DamageSystem.gd" id="1_0clcw"]
+
+[node name="Damage_Sys" type="Node"]
+script = ExtResource("1_0clcw")

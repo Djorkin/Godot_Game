@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwbt2io6ab2de"]
+
+[ext_resource type="ArrayMesh" uid="uid://ddehlgtlcyilw" path="res://Asset/heal_colba.obj" id="1_2t60d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qrnr"]
+albedo_color = Color(0.745098, 0, 0, 1)
+roughness = 0.0
+clearcoat_enabled = true
+
+[node name="Heal_colba" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="HealColba" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0754658, 0, 0.128812)
+material_override = SubResource("StandardMaterial3D_8qrnr")
+mesh = ExtResource("1_2t60d")

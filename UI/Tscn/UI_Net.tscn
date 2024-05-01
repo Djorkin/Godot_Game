@@ -1,0 +1,136 @@
+[gd_scene load_steps=5 format=3 uid="uid://bphdluxewnjk3"]
+
+[ext_resource type="Script" path="res://UI/Scripts/Button.gd" id="1_2we0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l75ck"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 0.415686)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.193264, 0.068044, 0.639826, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="GDScript" id="GDScript_tklax"]
+script/source = "extends Button
+@onready var panel = $\"..\"
+
+
+func _on_pressed():
+	EventsGlobal.emit_signal(\"host\")
+	panel.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+"
+
+[sub_resource type="GDScript" id="GDScript_kkf1t"]
+script/source = "extends Button
+
+@onready var panel = $\"..\"
+
+func _on_pressed():
+	EventsGlobal.emit_signal(\"client\")
+	panel.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+"
+
+[node name="UI_Net" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -177.0
+offset_top = -210.5
+offset_right = 177.0
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l75ck")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lobby" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Лобби"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Server" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Client" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Clients" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -60.0
+offset_right = 73.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Ок"
+script = ExtResource("1_2we0f")
+
+[node name="Host" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -375.0
+offset_right = 73.0
+offset_bottom = -334.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Host"
+script = SubResource("GDScript_tklax")
+
+[node name="Client" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -307.0
+offset_right = 73.0
+offset_bottom = -266.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Client"
+script = SubResource("GDScript_kkf1t")
+
+[connection signal="pressed" from="Panel/Button" to="Panel/Button" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Host" to="Panel/Host" method="_on_pressed"]
+[connection signal="pressed" from="Panel/Client" to="Panel/Client" method="_on_pressed"]

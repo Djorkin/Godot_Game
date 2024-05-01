@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://6slgr8iic7xw"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_jxo4q"]
+[ext_resource type="Texture2D" uid="uid://bscdj770dou1h" path="res://Image/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="3_e8ieo"]
+[ext_resource type="PackedScene" uid="uid://du4gumq0wv851" path="res://tscn/ground.tscn" id="5_cf3d0"]
+[ext_resource type="PackedScene" uid="uid://n4mkevyr4xq7" path="res://tscn/player.tscn" id="6_5fgoy"]
+[ext_resource type="PackedScene" uid="uid://c5dh54v5h4mo6" path="res://tscn/Kill_box.tscn" id="8_dttow"]
+[ext_resource type="PackedScene" uid="uid://er82ayoqkt6n" path="res://tscn/Heal_box.tscn" id="9_68ilk"]
+[ext_resource type="PackedScene" uid="uid://cjd5ija3t3h00" path="res://tscn/dead_box.tscn" id="10_mxll6"]
+[ext_resource type="PackedScene" uid="uid://cb03uncvftrm3" path="res://tscn/base_box.tscn" id="11_mjipr"]
+[ext_resource type="PackedScene" uid="uid://bq6fy18xdota4" path="res://tscn/Damage_Sys.tscn" id="11_tju2s"]
+[ext_resource type="PackedScene" uid="uid://ddkp77656ahlc" path="res://tscn/Heal_Sys.tscn" id="12_02ssy"]
+[ext_resource type="PackedScene" uid="uid://bphdluxewnjk3" path="res://UI/Tscn/UI_Net.tscn" id="13_ila8g"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_x5mw3"]
+panorama = ExtResource("3_e8ieo")
+
+[sub_resource type="Sky" id="Sky_t0022"]
+sky_material = SubResource("PanoramaSkyMaterial_x5mw3")
+
+[sub_resource type="Environment" id="Environment_5lqpc"]
+background_mode = 2
+sky = SubResource("Sky_t0022")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 0.8
+ssr_max_steps = 512
+ssr_fade_in = 0.0123704
+ssr_fade_out = 1.36604
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 8
+sdfgi_min_cell_size = 6.10352e-06
+sdfgi_cascade0_distance = 0.000390625
+sdfgi_max_distance = 0.1
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 2.25
+
+[node name="CORE" type="Node"]
+script = ExtResource("1_jxo4q")
+player_scene = ExtResource("6_5fgoy")
+
+[node name="UI_Net" parent="." instance=ExtResource("13_ila8g")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5lqpc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.582687, 0.716185, -0.38413, -0.65067, -0.127917, 0.748509, 0.486934, 0.686088, 0.540535, 0, 15.0513, 0)
+light_energy = 0.33
+shadow_enabled = true
+shadow_blur = 0.5
+
+[node name="Ground2" parent="." instance=ExtResource("5_cf3d0")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -2)
+
+[node name="Base_box" parent="." instance=ExtResource("11_mjipr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[node name="Kill_box" parent="." instance=ExtResource("8_dttow")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -20)
+
+[node name="Heal_box" parent="." instance=ExtResource("9_68ilk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -40)
+
+[node name="DEAD_Box" parent="." instance=ExtResource("10_mxll6")]
+transform = Transform3D(40, 0, 0, 0, 0.5, 0, 0, 0, 33, 0, -33.3361, 0)
+
+[node name="Damage_Sys" parent="." instance=ExtResource("11_tju2s")]
+
+[node name="Heal_Sys" parent="." instance=ExtResource("12_02ssy")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://tscn/player.tscn")
+spawn_path = NodePath("..")
+
+[node name="Info" type="Label" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -269.0
+offset_top = -231.0
+offset_bottom = 232.0
+grow_horizontal = 0
+grow_vertical = 2

@@ -1,0 +1,14 @@
+*~
+*.tmp
+*.bak
+/bin/
+/build/
+/obj/
+/.vscode/
+/.idea/
+/.vs/
+/node_modules/
+/libs/
+.godot
+
+

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjd5ija3t3h00"]
+
+[ext_resource type="PackedScene" uid="uid://cb03uncvftrm3" path="res://tscn/base_box.tscn" id="1_ik41p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcnjr"]
+transparency = 4
+albedo_color = Color(1, 0, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_uc1c7"]
+script/source = "extends Base_box
+
+class_name Dead_box
+
+
+func _on_body_entered(_body):
+	EventsGlobal.emit_signal(\"end\")
+"
+
+[node name="DEAD_Box" instance=ExtResource("1_ik41p")]
+
+[node name="Base_box" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hcnjr")
+
+[node name="Area3D" parent="Base_box" index="0"]
+script = SubResource("GDScript_uc1c7")

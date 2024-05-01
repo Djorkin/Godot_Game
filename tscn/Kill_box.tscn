@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5dh54v5h4mo6"]
+
+[ext_resource type="PackedScene" uid="uid://cb03uncvftrm3" path="res://tscn/base_box.tscn" id="1_yfqpi"]
+[ext_resource type="Script" path="res://Scripts/kill_box.gd" id="2_eg3fn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_521n6"]
+transparency = 4
+albedo_color = Color(1, 0, 0, 0.168627)
+
+[node name="Kill_box" instance=ExtResource("1_yfqpi")]
+
+[node name="Base_box" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_521n6")
+
+[node name="Area3D" parent="Base_box" index="0"]
+script = ExtResource("2_eg3fn")
+value = 333
